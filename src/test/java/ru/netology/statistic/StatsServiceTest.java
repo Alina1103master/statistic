@@ -19,9 +19,6 @@ public class StatsServiceTest {
     }
 
 
-
-
-
     @org.junit.jupiter.api.Test
     void averageSales() {
         StatsService service = new StatsService();
@@ -39,7 +36,7 @@ public class StatsServiceTest {
     void maxSales() {
         StatsService service = new StatsService();
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 7;
+        int expected = 8;
 
         int actual = service.maxSales(sales);
         assertEquals(expected, actual);
@@ -57,32 +54,31 @@ public class StatsServiceTest {
 
         assertEquals(expected, actual);
 
-  }
+    }
+
+    @org.junit.jupiter.api.Test
+    void getAboveAverage() {
+        StatsService service = new StatsService();
+        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 5;
+        int actual = service.getAboveAverage(sales);
 
 
-   @org.junit.jupiter.api.Test
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
     void belowAverage() {
         StatsService service = new StatsService();
-      int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-       int expected = 5;
+        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 5;
+        int actual = service.getBelowAverage(sales);
 
-       int actual = service.belowAverage(sales);
 
         assertEquals(expected, actual);
 
     }
 
-
-   @Test
-    void aboveAverage() {
-     StatsService service = new StatsService();
-       int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
-
-        int actual = service.aboveAverage(sales);
-
-       assertEquals(expected, actual);
-    }
 
 }
 

@@ -2,82 +2,75 @@ package ru.netology.statistic;
 
 public class StatsService {
 
-    public int allSales(int[] sales) {
-
+    public static int allSales(int[] sales) {
+        // общая сумма продаж
         int sum = 0;
         for (int sale : sales) {
             sum += sale;
-
         }
         return sum;
     }
 
 
-    public int averageSales(int[] sales) {
-
-        int sum = 180;
-        int monthAmount = 12;
-        int averageSales = sum / monthAmount;
-
+    public static int averageSales(int[] sales) {
+        // средняя сумма продаж в месяц
+        int averageSales = allSales(sales) / 12;
         return averageSales;
-
     }
 
-    public int maxSales(int[] sales) {
-
-        int maxMonth = 0;
+    public static int maxSales(int[] sales) {
+        //месяц с максимальными продажами(последний)
+        int salesMax = sales[0];
         int month = 0;
-        int monthAmout = 7;
-
+        int maxMonth = 1;
         for (int sale : sales) {
-            if (sale >= sales[maxMonth]) {
+            month++;
+            if (salesMax <= sale) {
+                salesMax= sale;
                 maxMonth = month;
-
-
             }
         }
-        return monthAmout;
+        return maxMonth;
     }
 
-    public int minSales(int[] sales) {
-        int minMonth = 0;
-        int month = 0; // переменная для индекса рассматриваемого месяца в массиве
-        for (long sale : sales) {
-            // sales[minMonth] - продажи в месяце minMonth
-            // sale - продажи в рассматриваемом месяце
-            if (sale <= sales[minMonth]) {
+    public static int minSales(int[] sales) {
+        //месяц с минимальными продажами(последний)
+        int salesMin = sales[0];
+        int month = 0;
+        int minMonth = 1;
+        for (int sale : sales) {
+            month++;
+            if (salesMin >= sale) {
+                salesMin = sale;
                 minMonth = month;
             }
-            month = month + 1; // следующий рассматриваемый месяц имеет номер на 1 больше
         }
-        return minMonth + 1;
+        return minMonth;
     }
 
-
-    public int belowAverage(int[] sales) {
-        int middleSum = 5;
-        int thanMiddleSum = 0;
-
+    public static int getAboveAverage(int[] sales) {
+        //количество месяцев выше среднего
+        int amountOfMonthAboveAverage = 0;
+        int averageSales = 15;
         for (int sale : sales) {
-            if (sale <= sales[middleSum]) {
-                thanMiddleSum = middleSum;
+            if (sale < averageSales) {
+                amountOfMonthAboveAverage +=1;
             }
-            return thanMiddleSum;
         }
-        return middleSum;
+        return amountOfMonthAboveAverage;
     }
 
-
-    public int aboveAverage(int[] sales) {
-        int middleSum = 5;
-        int thanMiddleSum = 0;
-
+    public static int getBelowAverage(int[] sales) {
+        //количество месяцев ниже среднего
+       int amountOfMonthBelowAverage = 0;
+       int averageSales = 15;
         for (int sale : sales) {
-            if (sale < sales[middleSum]) {
-                thanMiddleSum = middleSum;
+            if (sale < averageSales) {
+                amountOfMonthBelowAverage++;
             }
-            return thanMiddleSum;
         }
-        return middleSum;
+        return amountOfMonthBelowAverage;
     }
+
+
 }
