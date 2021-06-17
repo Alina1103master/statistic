@@ -14,7 +14,7 @@ public class StatsService {
 
     public static int averageSales(int[] sales) {
         // средняя сумма продаж в месяц
-        int averageSales = allSales(sales) / 12;
+        int averageSales = allSales(sales) / sales.length;
         return averageSales;
     }
 
@@ -51,7 +51,7 @@ public class StatsService {
     public static int getAboveAverage(int[] sales) {
         //количество месяцев выше среднего
         int amountOfMonthAboveAverage = 0;
-        int averageSales = 15;
+        int averageSales =  allSales(sales) / sales.length;
         for (int sale : sales) {
             if (sale < averageSales) {
                 amountOfMonthAboveAverage +=1;
@@ -63,7 +63,7 @@ public class StatsService {
     public static int getBelowAverage(int[] sales) {
         //количество месяцев ниже среднего
        int amountOfMonthBelowAverage = 0;
-       int averageSales = 15;
+       int averageSales =  allSales(sales) / sales.length;
         for (int sale : sales) {
             if (sale < averageSales) {
                 amountOfMonthBelowAverage++;
